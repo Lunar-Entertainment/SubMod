@@ -1,0 +1,15 @@
+{
+  "Id": "CallOfTheAbyss",
+  "DisplayName": "Subnautica: Call of the Abyss",
+  "Author": "Lunar-Entertainment",
+  "Version": "1.0.0",
+  "Enable": true,
+  "Game": "Subnautica",
+  "AssemblyName": "CallOfTheAbyss.dll",
+  "Dependencies": [
+    "com.snmodding.nautilus"
+  ],
+  "VersionDependencies": {
+    "com.snmodding.nautilus": "1.0.0"
+  }
+}
