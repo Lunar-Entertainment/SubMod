@@ -7,6 +7,8 @@ using CallOfTheAbyss.Biomes;
 using CallOfTheAbyss.Items;
 using CallOfTheAbyss.Vehicles;
 using CallOfTheAbyss.Buildables;
+using CallOfTheAbyss.Buildables.InWall;
+using CallOfTheAbyss.Tools;
 using CallOfTheAbyss.Enemies;
 
 namespace CallOfTheAbyss;
@@ -35,7 +37,18 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
         // 1. Register Biomes
         AbyssalTrenchBiome.Register();
 
-        // 2. Register Items & Equipment
+        // 2. Register Items, Equipment & Tools
+        // Early & Mid Game
+        EmergencyO2Canister.Register();
+        BioluminescentChemStick.Register();
+        StreamlinedFins.Register();
+        InsulatedWetsuit.Register();
+        HydrostaticO2Tank.Register();
+
+        // Middle-Late Game Custom Architectural Tool
+        AbyssalArchitectWelder.Register();
+
+        // Late Game Abyssal
         AbyssalCrystal.Register();
         QuantumAlloy.Register();
         ThermalDiveSuit.Register();
@@ -48,14 +61,24 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
         AbyssalPhantomEgg.Register();
 
         // 4. Register Vehicle Upgrades & Modules
+        SeamothTrenchSonar.Register();
         VoidCrushMK4Upgrade.Register();
         QuantumPropulsionOverdrive.Register();
         HydroThermalShield.Register();
 
         // 5. Register Constructibles & Base Pieces
+        CompactWallCaddy.Register();
+        CompactDesalinator.Register();
         AbyssalLocker.Register();
         AbyssalThermalCore.Register();
         DeepSeaPurifier.Register();
+
+        // Custom In-Wall Modular System
+        InWallStorageNiche.Register();
+        InWallThermalCore.Register();
+        InWallBioLight.Register();
+        InWallPowerConduit.Register();
+        InWallReinforcedBulkhead.Register();
 
         // 6. Apply Harmony Patches for Mechanics
         Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);

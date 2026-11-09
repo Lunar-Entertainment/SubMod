@@ -20,24 +20,39 @@
 ---
 
 ### 2. ⚡ Vehicles & Modules
-- **Void Depth Module MK4**:
+- **Void Depth Module MK4** *(Late Game)*:
   - Pushes vehicle operational limits, extending maximum crush depth to **3,500 meters**!
   - Equipped in Moonpool Modification / Upgrade consoles.
-- **Quantum Overdrive Module**:
+- **Quantum Overdrive Module** *(Late Game)*:
   - Interactive chargeable boost module for the Seamoth.
   - Channels plasma bursts into propulsion thrusters for a 250% forward velocity impulse!
-- **Hydro-Thermal Pulse Shield**:
-  - Active defensive barrier that discharges thermal-kinetic shockwaves within 30m, repelling aggressive trench predators and leviathans.
+- **Hydro-Thermal Pulse Shield** *(Late Game)*:
+  - Active defensive barrier discharging thermal-kinetic shockwaves within 30m to repel aggressive trench predators and leviathans.
+- **Seamoth Trench Sonar Pulse** *(Mid Game)*:
+  - Mid-tier acoustic echolocation transceiver crafted with Magnetite, Copper Wire, and Computer Chip.
+  - Pings surroundings to calculate seabed depth and detect submerged obstacles or ravines before descending into unknown trenches.
 
 ---
 
 ### 3. 🏗️ Base Building & Constructibles
-- **Abyssal Geothermal Core**:
+- **Compact Solar Desalinator** *(Early Game)*:
+  - Wall-mounted solar-thermal evaporation condenser. Slowly distills ocean water into potable Filtered Water without consuming high base electrical power.
+  - Crafted with 2x Titanium, 1x Glass, 1x Copper Wire.
+- **Compact Wall Caddy** *(Early Game)*:
+  - Space-efficient wall storage container providing 25 storage slots (5x5). Ideal for early lifepods and small outpost corridors.
+  - Crafted with 1x Titanium, 1x Quartz.
+- **Abyssal Geothermal Core** *(Late Game)*:
   - Heavy seabase reactor generating up to 500W of continuous power by converting thermal gradients in deep hydrothermal areas.
-- **Abyssal Desalination Station**:
+- **Abyssal Desalination Station** *(Late Game)*:
   - High-pressure reverse-osmosis filtration wall console. Purifies deep-sea oceanic brine into Large Filtered Water and Salt crystals at accelerated speeds.
-- **Abyssal Titanium Locker**:
+- **Abyssal Titanium Locker** *(Late Game)*:
   - Ultra-high capacity reinforced storage locker featuring an **8x10 (80 slots)** inventory containment grid.
+- **Modular In-Wall Systems** *(Middle-Late Game, built with Abyssal Architectural Welder)*:
+  - **Recessed In-Wall Storage Niche**: 36-slot internal wall locker that doesn't obstruct corridor walkways. (2x Titanium, 1x Quartz)
+  - **In-Wall Convection Thermal Core**: Internal heating coil providing warmth against cold and +3.0 Base Hull Strength. (1x Titanium, 1x Magnetite, 1x Copper Wire)
+  - **In-Wall Bio-Luminescent Light Panel**: Flush illuminated panel emitting soft cyan-teal radiance. (1x Glass, 1x Titanium, 1x Creepvine)
+  - **In-Wall Micro-Capacitor Conduit**: Recessed power node expanding base storage by +100 Energy. (1x Titanium, 1x Gold, 1x Copper Wire)
+  - **In-Wall Structural Reinforcement Bulkhead**: Heavy composite partition panel adding +7.0 Base Hull Strength. (2x Titanium, 2x Lithium)
 
 ---
 
@@ -52,6 +67,27 @@
 ---
 
 ### 5. 💎 New Items & Equipment
+
+#### Early & Mid Game:
+- **Emergency O2 Micro-Canister** *(Early Game)*:
+  - Single-use pressurized micro-cylinder (1x Titanium, 1x Glass, 1x Creepvine). Instantly injects +25 units of oxygen when activated in hand, saving divers from early-game drowning in winding caves.
+- **Bioluminescent Chem-Stick** *(Early Game)*:
+  - Chemical glowstick charged with reactive Acid Mushroom enzymes (2x Acid Mushroom, 1x Titanium). Emits a soothing emerald glow for 10+ minutes to light up dark pockets and attract small fish.
+- **Hydrodynamic Streamlined Fins** *(Early-Mid Game)*:
+  - Reinforced fins (1x Fins, 1x Fiber Mesh, 1x Titanium) granting +15% unassisted swim velocity before advanced modification stations are unlocked.
+- **Insulated Neoprene Wetsuit** *(Mid Game)*:
+  - Mid-tier thermal dive suit (2x Fiber Mesh, 2x Silicone Rubber, 1x Stalker Tooth). Drastically slows body heat loss in waters down to 450m and reduces the shivering threshold.
+- **Hydrostatic Compression Tank** *(Mid Game)*:
+  - Dual-stage high pressure cylinder (1x High Capacity Tank, 2x Lithium, 1x Silver Ore) holding 135 units of oxygen with minimal hydrodynamic drag.
+
+#### Middle-Late Game:
+- **Abyssal Architectural Welder** *(Middle-Late Game)*:
+  - Specialized quantum construction tool built at the Modification Station (1x Habitat Builder, 1x Advanced Wiring Kit, 2x Magnetite, 1x Diamond).
+  - **In-Wall Build System**: Embeds custom modules flush into base and submarine bulkhead walls with real-time holographic ghost placement.
+  - **Custom Part Cycling**: Right-click cycles between in-wall storage niches, thermal cores, bioluminescent lights, power conduits, and reinforcement bulkheads.
+  - **Wall Demolition / Deconstruct System**: Press `R` or `Alt` to toggle into Demolition mode. Dismantles installed in-wall modules (with 100% material refund), removes existing wall fixtures, or demolishes base wall sections!
+
+#### Late Game (Abyssal):
 - **Abyssal Crystal**:
   - Naturally glowing cyan mineral found in the deepest corridors of the Grand Reef, Lost River, and Abyssal Trench.
 - **Quantum Alloy Ingot**:
@@ -68,9 +104,10 @@
 ### 6. ❄️ Survival Mechanics
 - **Deep-Sea Hypothermia**:
   - Swimming in waters below 450m or inside the Abyssal Trench causes body temperature to decay from 37°C.
-  - Sub-28°C causes shivering camera oscillations and audio-visual alerts.
+  - The **Insulated Neoprene Wetsuit** provides essential mid-game thermal resistance, cutting body temperature decay rate by ~65%.
+  - Staying inside a submarine, base, or equipping the late-game **Abyssal Thermal Dive Suit** grants complete immunity.
+  - Sub-28°C (Sub-22°C when wearing the Insulated Wetsuit) causes shivering camera oscillations and audio-visual alerts.
   - Sub-20°C induces hypothermic shock damage.
-  - Staying inside a submarine, base, or equipping the **Abyssal Thermal Dive Suit** preserves body temperature.
 - **Hyperventilation Oxygen Drain**:
   - Oxygen consumption rate is **doubled** when suffering from hypothermic shock.
 - **Barometric Pressure Crushing**:
@@ -90,14 +127,28 @@ Configurable directly from the **Options > Mods > Call of the Abyss** pause menu
 
 ## 🛠️ Installation Guide
 
+### Option A: Automated Zorin OS / Linux Install (All-in-One)
+If you are playing on **Zorin OS / Linux (Steam Proton)**:
+1. Clone or pull this repository:
+   ```bash
+   git pull origin main
+   ```
+2. Run the automated installer script:
+   ```bash
+   ./install_zorin.sh
+   ```
+   *(This automatically installs BepInEx, Nautilus, and Call of the Abyss into your Subnautica Steam folder!)*
+3. In Steam, right-click **Subnautica > Properties > General > Launch Options** and enter:
+   ```bash
+   WINEDLLOVERRIDES="winhttp=n,b" %command%
+   ```
+4. Launch Subnautica!
+
+### Option B: Manual Installation
 1. Install **[BepInEx Pack for Subnautica](https://subnautica.thunderstore.io/package/BepInEx/BepInExPack_Subnautica/)** (v5.4.21+).
 2. Install **[Nautilus](https://subnautica.thunderstore.io/package/SubnauticaModding/Nautilus/)** (v1.0.0+).
-3. Download or build `CallOfTheAbyss.dll`.
-4. Copy `CallOfTheAbyss.dll` and `mod.json` into:
-   ```
-   Subnautica/BepInEx/plugins/CallOfTheAbyss/
-   ```
-5. Launch Subnautica and dive into the depths!
+3. Copy `dist/Subnautica_CallOfTheAbyss_CompleteBundle/*` (or extract `Subnautica_CallOfTheAbyss_CompleteBundle.zip`) directly into your `Subnautica/` folder.
+4. Launch Subnautica and dive into the depths!
 
 ---
 

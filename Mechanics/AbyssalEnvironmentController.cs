@@ -30,14 +30,19 @@ public class AbyssalEnvironmentController : MonoBehaviour
         bool isSheltered = _player.IsInSub() || _player.IsInBase();
         float currentDepth = _player.GetDepth();
 
-        // Check if player has the Abyssal Thermal Dive Suit equipped
+        // Check if player has the Abyssal Thermal Dive Suit or Insulated Wetsuit equipped
         bool hasThermalSuit = false;
+        bool hasInsulatedWetsuit = false;
         if (Inventory.main != null && Inventory.main.equipment != null)
         {
             var bodyTech = Inventory.main.equipment.GetTechTypeInSlot("Body");
             if (bodyTech == ThermalDiveSuit.Info.TechType)
             {
                 hasThermalSuit = true;
+            }
+            else if (bodyTech == InsulatedWetsuit.Info.TechType)
+            {
+                hasInsulatedWetsuit = true;
             }
         }
 
@@ -51,8 +56,16 @@ public class AbyssalEnvironmentController : MonoBehaviour
 
             if (inFrigidWater && !hasThermalSuit)
             {
-                // Temperature drops in icy ocean depths
-                CurrentBodyTemperature = Mathf.Max(12.0f, CurrentBodyTemperature - Time.deltaTime * 0.75f);
+                if (hasInsulatedWetsuit)
+                {
+                    // Mid-game insulated wetsuit cushions cold loss significantly
+                    CurrentBodyTemperature = Mathf.Max(20.0f, CurrentBodyTemperature - Time.deltaTime * 0.25f);
+                }
+                else
+                {
+                    // Uninsulated temperature drops rapidly in icy ocean depths
+                    CurrentBodyTemperature = Mathf.Max(12.0f, CurrentBodyTemperature - Time.deltaTime * 0.75f);
+                }
             }
             else
             {
@@ -60,7 +73,8 @@ public class AbyssalEnvironmentController : MonoBehaviour
                 CurrentBodyTemperature = Mathf.Min(37.0f, CurrentBodyTemperature + Time.deltaTime * 2.5f);
             }
 
-            IsPlayerFreezing = CurrentBodyTemperature < 28.0f;
+            float freezingThreshold = hasInsulatedWetsuit ? 22.0f : 28.0f;
+            IsPlayerFreezing = CurrentBodyTemperature < freezingThreshold;
 
             // Freezing effects: periodic camera jitter and hypothermic shock damage
             if (IsPlayerFreezing && !isSheltered)
