@@ -127,5 +127,41 @@ public class AbyssalEnvironmentController : MonoBehaviour
                 }
             }
         }
+
+        // ==========================================
+        // 3. CARTOGRAPHIC HUD CHIP TELEMETRY
+        // ==========================================
+        bool hasCartographyChip = false;
+        if (Inventory.main != null && Inventory.main.equipment != null)
+        {
+            var chip1 = Inventory.main.equipment.GetTechTypeInSlot("Chip1");
+            var chip2 = Inventory.main.equipment.GetTechTypeInSlot("Chip2");
+            if (chip1 == CartographicHUDChip.Info.TechType || chip2 == CartographicHUDChip.Info.TechType)
+            {
+                hasCartographyChip = true;
+            }
+        }
+
+        if (hasCartographyChip)
+        {
+            _nextHudTimer += Time.deltaTime;
+            if (_nextHudTimer >= 0.25f)
+            {
+                _nextHudTimer = 0f;
+                Vector3 pos = _player.transform.position;
+                string biome = _player.GetBiomeString();
+                bool hit = Physics.Raycast(pos, Vector3.down, out RaycastHit downHit, 200f);
+                string seabed = hit ? $"{downHit.distance:F0}m" : ">200m";
+                _cachedNavHud = $"🧭 [NAV] {biome} | ({pos.x:F0}, {pos.y:F0}, {pos.z:F0}) | Depth: {currentDepth:F0}m | Seabed: {seabed}";
+            }
+
+            if (!string.IsNullOrEmpty(_cachedNavHud))
+            {
+                HandReticle.main.SetText(HandReticle.TextType.Use, _cachedNavHud, false);
+            }
+        }
     }
+
+    private float _nextHudTimer;
+    private string _cachedNavHud = "";
 }

@@ -23,6 +23,7 @@
 - **Modular Seaglide System** *(Early-Mid Game)*:
   - **Modular Seaglide**: Built by combining 1x standard Seaglide and 1x Empty Seaglide Module Chassis. Equipped with an internal expansion socket for hot-swappable performance modules. Press **`F`** or **`Alt`** while holding to hot-swap modules directly from your inventory!
   - **Empty Seaglide Module Chassis**: Unprogrammed module housing crafted with 1x Titanium, 1x Wiring Kit, 1x Computer Chip.
+  - **Seaglide Holographic Cartography Module**: 1x Empty Module, 1x Computer Chip, 1x Magnetite, 1x Glass. Quadruples terrain scanning range up to **120m**, angles the hologram downward into a dashboard position so forward line-of-sight is unobstructed, adds **`G` key zoom cycling (120m / 60m / 30m)**, and renders live coordinates, biome, and seabed telemetry.
   - **Seaglide Speed Overdrive Module**: 1x Empty Module, 1x Magnetite, 1x Lubricant. Boosts underwater propulsion speed by **+35%**!
   - **Seaglide Rebreather & O2 Injection Module**: 1x Empty Module, 1x Fiber Mesh, 1x Air Bladder. Continuously trickles fresh oxygen into your supply while actively gliding.
   - **Seaglide Efficiency & Capacitor Module**: 1x Empty Module, 1x Battery, 1x Copper Wire. Reduces motor power drain by **65%**, more than doubling battery runtime.
@@ -86,6 +87,8 @@
   - Mid-tier thermal dive suit (2x Fiber Mesh, 2x Silicone Rubber, 1x Stalker Tooth). Drastically slows body heat loss in waters down to 450m and reduces the shivering threshold.
 - **Hydrostatic Compression Tank** *(Mid Game)*:
   - Dual-stage high pressure cylinder (1x High Capacity Tank, 2x Lithium, 1x Silver Ore) holding 135 units of oxygen with minimal hydrodynamic drag.
+- **Abyssal Cartographic HUD Chip** *(Mid Game)*:
+  - Visor-mounted navigational coprocessor (1x Compass, 1x Computer Chip, 1x Copper Wire). Continuously renders real-time topographic coordinates (X, Y, Z), current biome telemetry, and distance to seabed onto the diving mask visor.
 
 #### Middle-Late Game:
 - **Abyssal Architectural Welder** *(Middle-Late Game)*:

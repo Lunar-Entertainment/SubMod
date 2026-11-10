@@ -13,6 +13,10 @@ public class ModularSeaglideController : MonoBehaviour
     private float _nextTelemetryTimer;
     private float _lastEnergyValue;
 
+    private static readonly int[] MapRanges = new int[] { 120, 60, 30 };
+    private int _mapRangeIndex = 0;
+    private bool _mapConfigured = false;
+
     private static readonly List<TechType> CompatibleModules = new List<TechType>();
 
     private void Start()
@@ -22,6 +26,7 @@ public class ModularSeaglideController : MonoBehaviour
 
         if (CompatibleModules.Count == 0)
         {
+            CompatibleModules.Add(SeaglideMapModule.Info.TechType);
             CompatibleModules.Add(SeaglideSpeedModule.Info.TechType);
             CompatibleModules.Add(SeaglideOxygenModule.Info.TechType);
             CompatibleModules.Add(SeaglideBatteryModule.Info.TechType);
@@ -57,7 +62,63 @@ public class ModularSeaglideController : MonoBehaviour
         string moduleName = GetModuleName(CurrentModule);
         string telemetryExtra = "";
 
-        // 1. Oxygen Module Active Effect
+        // 1. Holographic Cartography Module Active Effect
+        if (CurrentModule == SeaglideMapModule.Info.TechType)
+        {
+            var mapCtrl = _seaglide != null ? _seaglide.GetComponentInChildren<VehicleInterface_MapController>() : null;
+            if (mapCtrl != null && mapCtrl.miniWorld != null)
+            {
+                _mapConfigured = true;
+
+                // Cycle ranges with G key
+                if (Input.GetKeyDown(KeyCode.G))
+                {
+                    _mapRangeIndex = (_mapRangeIndex + 1) % MapRanges.Length;
+                    int range = MapRanges[_mapRangeIndex];
+                    mapCtrl.miniWorld.mapWorldRadius = range;
+                    mapCtrl.miniWorld.fadeRadius = Mathf.Max(10f, range - 10f);
+                    ErrorMessage.AddMessage($"[Holo-Map] Range: {range}m");
+                }
+
+                int curRange = MapRanges[_mapRangeIndex];
+                mapCtrl.miniWorld.mapWorldRadius = curRange;
+                mapCtrl.miniWorld.fadeRadius = Mathf.Max(10f, curRange - 10f);
+                mapCtrl.miniWorld.hologramRadius = 0.22f;
+                mapCtrl.miniWorld.SetColor(new Color(0f, 0.95f, 1f, 0.45f));
+
+                // Offset downward slightly so forward line of sight is clear
+                if (mapCtrl.mapHolder != null)
+                {
+                    mapCtrl.mapHolder.transform.localPosition = new Vector3(0f, -0.06f, 0.18f);
+                }
+
+                if (Player.main != null)
+                {
+                    Vector3 pos = Player.main.transform.position;
+                    string biome = Player.main.GetBiomeString();
+                    telemetryExtra = $" | Range: {curRange}m [G to cycle] | {biome} ({pos.x:F0}, {pos.y:F0}, {pos.z:F0})";
+                }
+            }
+        }
+        else if (_mapConfigured)
+        {
+            // Reset to default Seaglide map state
+            var mapCtrl = _seaglide != null ? _seaglide.GetComponentInChildren<VehicleInterface_MapController>() : null;
+            if (mapCtrl != null && mapCtrl.miniWorld != null)
+            {
+                mapCtrl.miniWorld.mapWorldRadius = 30;
+                mapCtrl.miniWorld.fadeRadius = 25f;
+                mapCtrl.miniWorld.hologramRadius = 0.3f;
+                mapCtrl.miniWorld.SetColor(new Color(0.2f, 0.6f, 1f, 0.6f));
+                if (mapCtrl.mapHolder != null)
+                {
+                    mapCtrl.mapHolder.transform.localPosition = Vector3.zero;
+                }
+            }
+            _mapConfigured = false;
+        }
+
+        // 2. Oxygen Module Active Effect
         if (CurrentModule == SeaglideOxygenModule.Info.TechType)
         {
             if (Player.main != null && Player.main.IsUnderwater())
@@ -74,7 +135,7 @@ public class ModularSeaglideController : MonoBehaviour
             }
         }
 
-        // 2. Battery Efficiency Module Active Effect
+        // 3. Battery Efficiency Module Active Effect
         if (CurrentModule == SeaglideBatteryModule.Info.TechType && _energyMixin != null)
         {
             float currentCharge = _energyMixin.charge;
@@ -91,7 +152,7 @@ public class ModularSeaglideController : MonoBehaviour
             _lastEnergyValue = _energyMixin.charge;
         }
 
-        // 3. Sonar Telemetry Module Active Effect
+        // 4. Sonar Telemetry Module Active Effect
         if (CurrentModule == SeaglideSonarModule.Info.TechType && Player.main != null)
         {
             _nextTelemetryTimer += Time.deltaTime;
@@ -144,6 +205,7 @@ public class ModularSeaglideController : MonoBehaviour
 
     public static string GetModuleName(TechType mod)
     {
+        if (mod == SeaglideMapModule.Info.TechType) return "Holo-Cartography (120m)";
         if (mod == SeaglideSpeedModule.Info.TechType) return "Speed Overdrive (+35%)";
         if (mod == SeaglideOxygenModule.Info.TechType) return "Rebreather & O2 Injection";
         if (mod == SeaglideBatteryModule.Info.TechType) return "65% Power Efficiency";

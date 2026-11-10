@@ -45,10 +45,12 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
         StreamlinedFins.Register();
         InsulatedWetsuit.Register();
         HydrostaticO2Tank.Register();
+        CartographicHUDChip.Register();
 
         // Modular Seaglide & Expansion Modules
         EmptySeaglideModule.Register();
         ModularSeaglide.Register();
+        SeaglideMapModule.Register();
         SeaglideSpeedModule.Register();
         SeaglideOxygenModule.Register();
         SeaglideBatteryModule.Register();
