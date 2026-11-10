@@ -11,11 +11,20 @@
 
 ## 🌟 Features Overview
 
-### 1. 🌌 New Biome: The Abyssal Trench
-- **Deep Midnight Atmosphere**: Plunges deep beneath the Grand Reef and dunes into pitch-black waters (`-1350, -850, 420`) where sunlight cannot penetrate.
-- **Atmospheric Fog & Lighting**: High light absorption and dense scattering volume with cold bioluminescent illumination.
-- **Audio Ambience**: Custom deep-sea acoustics and eerie FMOD background audio tracks.
-- **Fast Travel**: Accessible in console via `goto abyssaltrench` or `biome abyssaltrench`.
+### 1. 🌌 New Biomes: Deep Oceans & Beyond the Outer Edge
+- **The Abyssal Trench** *(Mid-to-Late Game)*:
+  - **Deep Midnight Atmosphere**: Plunges deep beneath the Grand Reef and dunes into pitch-black waters (`-1350, -850, 420`) where sunlight cannot penetrate.
+  - **Atmospheric Fog & Lighting**: High light absorption and dense scattering volume with cold bioluminescent illumination.
+  - **Audio Ambience**: Custom deep-sea acoustics and eerie FMOD background audio tracks.
+  - **Fast Travel**: Accessible in console via `goto abyssaltrench` or `biome abyssaltrench`.
+- **The Hadal Chasm** *(End-Game / Past the Outer Edge)*:
+  - **Beyond the Void**: Located past the Crater Edge shelf, plunging from **5,000 meters** at its highest upper ridge down to **8,000 meters** at the abyssal edge drop!
+  - **Stygian Darkness**: Absolute zero sunlight penetration, extreme optical absorption, oppressive hadal murkiness, and faint bioluminescent violet/cyan haze.
+  - **Apex Void Inhabitants**: Patrolled by terrifying Void Ghost Leviathans, Abyssal Phantoms, and quarantine Warpers.
+  - **Hadal Crystallized Deposits**: Rich in Abyssal Crystals and Kyanite formations.
+  - **Fast Travel Teleports**:
+    - `goto hadalchasm`: Teleports to the upper ridge entrance at **5,000m depth**.
+    - `goto hadaledge`: Teleports straight to the deepest void drop at **8,000m depth**!
 
 ---
 
@@ -34,6 +43,10 @@
     - **Port Drill Arm (Left-Click)**: Excavates large resource deposits directly from the cockpit, cracks open mineral outcrops, and strikes hostile fauna for 50 kinetic damage with high knockback.
     - **Starboard Grapple Arm (Right-Click)**: Fires a powerful kinetic tether impulse, pulling the submersible forward through deep ocean currents.
   - **Recipe (Mobile Vehicle Bay)**: 1x Plasteel Ingot, 2x Enameled Glass, 1x Advanced Wiring Kit, 2x Power Cell, 2x Lead, 1x Lubricant.
+- **Void Depth Module MK5 (Hadal Depth Module)** *(End-Game / Hadal)*:
+  - Hyper-compressed quantum singularity matrix reinforced with hadal crystal lattice.
+  - Extends vehicle crush depth to an extraordinary **8,500 meters**, fully unlocking exploration of the 5,000m–8,000m Hadal Chasm for both the Seamoth and SeaManta!
+  - Crafted at Modification Station: 1x VoidCrushMK4Upgrade, 2x Quantum Alloy, 3x Abyssal Crystal, 3x Kyanite, 2x Polyaniline.
 - **Void Depth Module MK4** *(Late Game)*:
   - Pushes vehicle operational limits, extending maximum crush depth to **3,500 meters**!
   - Equipped in Moonpool Modification / Upgrade consoles.
@@ -103,11 +116,15 @@
   - **Custom Part Cycling**: Right-click cycles between in-wall storage niches, thermal cores, bioluminescent lights, power conduits, and reinforcement bulkheads.
   - **Wall Demolition / Deconstruct System**: Press `R` or `Alt` to toggle into Demolition mode. Dismantles installed in-wall modules (with 100% material refund), removes existing wall fixtures, or demolishes base wall sections!
 
-#### Late Game (Abyssal):
+#### Late Game & Hadal:
 - **Abyssal Crystal**:
   - Naturally glowing cyan mineral found in the deepest corridors of the Grand Reef, Lost River, and Abyssal Trench.
 - **Quantum Alloy Ingot**:
   - Super-alloy forged from Plasteel, Abyssal Crystals, Diamond, and Lead.
+- **Hadal Heavy Dive Suit** *(End-Game / Hadal)*:
+  - Experimental hyperbaric atmospheric dive suit lined with quantum mesh and liquid fluorocarbon pressure dampers.
+  - Shields the diver against crushing barometric pressures up to **8,500 meters** and frigid hadal waters when swimming outside submersibles in the Hadal Chasm!
+  - Crafted at Modification Station: 1x Abyssal Thermal Suit, 2x Quantum Alloy, 3x Abyssal Crystal, 2x Kyanite, 2x Polyaniline.
 - **Abyssal Thermal Dive Suit**:
   - State-of-the-art diving suit insulated with aerogel and quantum micro-composites. Shields the player from sub-zero ocean temperatures and barometric pressure down to 3,500m.
 - **Abyssal Kinetic Harpoon**:
@@ -119,15 +136,16 @@
 
 ### 6. ❄️ Survival Mechanics
 - **Deep-Sea Hypothermia**:
-  - Swimming in waters below 450m or inside the Abyssal Trench causes body temperature to decay from 37°C.
+  - Swimming in waters below 450m, inside the Abyssal Trench, or within the Hadal Chasm causes body temperature to decay from 37°C.
   - The **Insulated Neoprene Wetsuit** provides essential mid-game thermal resistance, cutting body temperature decay rate by ~65%.
-  - Staying inside a submarine, base, or equipping the late-game **Abyssal Thermal Dive Suit** grants complete immunity.
+  - Staying inside a submarine, base, or equipping the **Hadal Heavy Dive Suit** (or Abyssal Thermal Dive Suit) grants complete immunity.
   - Sub-28°C (Sub-22°C when wearing the Insulated Wetsuit) causes shivering camera oscillations and audio-visual alerts.
   - Sub-20°C induces hypothermic shock damage.
 - **Hyperventilation Oxygen Drain**:
   - Oxygen consumption rate is **doubled** when suffering from hypothermic shock.
 - **Barometric Pressure Crushing**:
-  - Diving past 1,200m without vehicle hull shelter or the Abyssal Thermal Dive Suit causes continuous barometric crush damage.
+  - **Trench Depths (1,200m–5,000m)**: Diving past 1,200m without vehicle hull shelter or the Abyssal Thermal Dive Suit causes continuous barometric crush damage (12 dmg/tick).
+  - **Hadal Chasm (5,000m–8,000m)**: Diving past 5,000m down to 8,000m subjects the diver to extreme pressures exceeding 800 atmospheres! Requires a protected submersible hull (with Void Depth Module MK5) or the **Hadal Heavy Dive Suit**, otherwise causes catastrophic crush damage (25 dmg/tick).
 
 ---
 

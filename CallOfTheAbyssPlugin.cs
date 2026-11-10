@@ -37,6 +37,7 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
 
         // 1. Register Biomes
         AbyssalTrenchBiome.Register();
+        HadalChasmBiome.Register();
 
         // 2. Register Items, Equipment & Tools
         // Early & Mid Game
@@ -59,10 +60,11 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
         // Middle-Late Game Custom Architectural Tool
         AbyssalArchitectWelder.Register();
 
-        // Late Game Abyssal
+        // Late Game Abyssal & Hadal
         AbyssalCrystal.Register();
         QuantumAlloy.Register();
         ThermalDiveSuit.Register();
+        HadalDiveSuit.Register();
         AbyssalStasisHarpoon.Register();
         BioluminescentFlare.Register();
 
@@ -75,6 +77,7 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
         SeaMantaSubmersible.Register();
         SeamothTrenchSonar.Register();
         VoidCrushMK4Upgrade.Register();
+        HadalCrushMK5Upgrade.Register();
         QuantumPropulsionOverdrive.Register();
         HydroThermalShield.Register();
 

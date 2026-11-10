@@ -30,13 +30,19 @@ public class AbyssalEnvironmentController : MonoBehaviour
         bool isSheltered = _player.IsInSub() || _player.IsInBase();
         float currentDepth = _player.GetDepth();
 
-        // Check if player has the Abyssal Thermal Dive Suit or Insulated Wetsuit equipped
+        // Check if player has the Hadal Dive Suit, Abyssal Thermal Dive Suit or Insulated Wetsuit equipped
+        bool hasHadalSuit = false;
         bool hasThermalSuit = false;
         bool hasInsulatedWetsuit = false;
         if (Inventory.main != null && Inventory.main.equipment != null)
         {
             var bodyTech = Inventory.main.equipment.GetTechTypeInSlot("Body");
-            if (bodyTech == ThermalDiveSuit.Info.TechType)
+            if (bodyTech == HadalDiveSuit.Info.TechType)
+            {
+                hasHadalSuit = true;
+                hasThermalSuit = true;
+            }
+            else if (bodyTech == ThermalDiveSuit.Info.TechType)
             {
                 hasThermalSuit = true;
             }
@@ -46,17 +52,30 @@ public class AbyssalEnvironmentController : MonoBehaviour
             }
         }
 
+        string currentBiome = _player.GetBiomeString();
+        bool inHadalZone = currentBiome == HadalChasmBiome.BiomeName || currentDepth >= 4900f;
+
         // ==========================================
         // 1. HYPOTHERMIA MECHANIC
         // ==========================================
         if (CallOfTheAbyssPlugin.ModSettings.EnableHypothermia)
         {
-            // Deep water or within the Abyssal Trench
-            bool inFrigidWater = !isSheltered && (currentDepth > 450f || Player.main.GetBiomeString() == AbyssalTrenchBiome.BiomeName);
+            // Deep water, Abyssal Trench or Hadal Chasm
+            bool inFrigidWater = !isSheltered && (currentDepth > 450f || currentBiome == AbyssalTrenchBiome.BiomeName || inHadalZone);
 
-            if (inFrigidWater && !hasThermalSuit)
+            if (inFrigidWater && !hasHadalSuit)
             {
-                if (hasInsulatedWetsuit)
+                if (hasThermalSuit && !inHadalZone)
+                {
+                    // Thermal suit maintains heat in standard abyss
+                    CurrentBodyTemperature = Mathf.Min(37.0f, CurrentBodyTemperature + Time.deltaTime * 1.5f);
+                }
+                else if (hasThermalSuit && inHadalZone)
+                {
+                    // In the Hadal Chasm (5000m-8000m), thermal suit slowly chills without Hadal composite
+                    CurrentBodyTemperature = Mathf.Max(26.0f, CurrentBodyTemperature - Time.deltaTime * 0.15f);
+                }
+                else if (hasInsulatedWetsuit)
                 {
                     // Mid-game insulated wetsuit cushions cold loss significantly
                     CurrentBodyTemperature = Mathf.Max(20.0f, CurrentBodyTemperature - Time.deltaTime * 0.25f);
@@ -113,16 +132,32 @@ public class AbyssalEnvironmentController : MonoBehaviour
         // ==========================================
         if (CallOfTheAbyssPlugin.ModSettings.EnablePressureHazard)
         {
-            // Depth exceeds 1200m without thermal suit or vehicle protection
-            if (!isSheltered && currentDepth > 1200f && !hasThermalSuit)
+            if (!isSheltered)
             {
-                if (Time.time > _nextDamageTime)
+                // Level 2: Hadal Chasm (>5000m down to 8000m) extreme pressure
+                if (inHadalZone && !hasHadalSuit)
                 {
-                    _nextDamageTime = Time.time + 2.0f;
-                    ErrorMessage.AddMessage("WARNING: Extreme Barometric Pressure! Crush depth exceeded!");
-                    if (_player.liveMixin != null)
+                    if (Time.time > _nextDamageTime)
                     {
-                        _player.liveMixin.TakeDamage(12f, _player.transform.position, DamageType.Pressure, gameObject);
+                        _nextDamageTime = Time.time + 2.0f;
+                        ErrorMessage.AddMessage("CRITICAL WARNING: Hadal Barometric Pressure exceeding 800 atm! Hadal Heavy Dive Suit or Submersible required!");
+                        if (_player.liveMixin != null)
+                        {
+                            _player.liveMixin.TakeDamage(25f, _player.transform.position, DamageType.Pressure, gameObject);
+                        }
+                    }
+                }
+                // Level 1: Depth exceeds 1200m without thermal/hadal suit
+                else if (currentDepth > 1200f && !hasThermalSuit && !hasHadalSuit)
+                {
+                    if (Time.time > _nextDamageTime)
+                    {
+                        _nextDamageTime = Time.time + 2.0f;
+                        ErrorMessage.AddMessage("WARNING: Extreme Barometric Pressure! Crush depth exceeded!");
+                        if (_player.liveMixin != null)
+                        {
+                            _player.liveMixin.TakeDamage(12f, _player.transform.position, DamageType.Pressure, gameObject);
+                        }
                     }
                 }
             }
@@ -149,10 +184,18 @@ public class AbyssalEnvironmentController : MonoBehaviour
             {
                 _nextHudTimer = 0f;
                 Vector3 pos = _player.transform.position;
-                string biome = _player.GetBiomeString();
+                string biome = currentBiome;
                 bool hit = Physics.Raycast(pos, Vector3.down, out RaycastHit downHit, 200f);
                 string seabed = hit ? $"{downHit.distance:F0}m" : ">200m";
-                _cachedNavHud = $"🧭 [NAV] {biome} | ({pos.x:F0}, {pos.y:F0}, {pos.z:F0}) | Depth: {currentDepth:F0}m | Seabed: {seabed}";
+                
+                if (inHadalZone)
+                {
+                    _cachedNavHud = $"🧭 [HADAL CHASM] ({pos.x:F0}, {pos.y:F0}, {pos.z:F0}) | Depth: {currentDepth:F0}m (Edge: 8000m) | Pressure: {(currentDepth * 0.103f):F0} atm | Seabed: {seabed}";
+                }
+                else
+                {
+                    _cachedNavHud = $"🧭 [NAV] {biome} | ({pos.x:F0}, {pos.y:F0}, {pos.z:F0}) | Depth: {currentDepth:F0}m | Seabed: {seabed}";
+                }
             }
 
             if (!string.IsNullOrEmpty(_cachedNavHud))
