@@ -71,7 +71,8 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
         AbyssalPhantom.Register();
         AbyssalPhantomEgg.Register();
 
-        // 4. Register Vehicle Upgrades & Modules
+        // 4. Register Vehicles & Vehicle Modules
+        SeaMantaSubmersible.Register();
         SeamothTrenchSonar.Register();
         VoidCrushMK4Upgrade.Register();
         QuantumPropulsionOverdrive.Register();

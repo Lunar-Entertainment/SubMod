@@ -28,6 +28,12 @@
   - **Seaglide Rebreather & O2 Injection Module**: 1x Empty Module, 1x Fiber Mesh, 1x Air Bladder. Continuously trickles fresh oxygen into your supply while actively gliding.
   - **Seaglide Efficiency & Capacitor Module**: 1x Empty Module, 1x Battery, 1x Copper Wire. Reduces motor power drain by **65%**, more than doubling battery runtime.
   - **Seaglide Acoustic Telemetry Module**: 1x Empty Module, 1x Copper Wire, 1x Quartz. Projects real-time HUD telemetry detailing current seabed clearance, depth, and water temperature.
+- **SeaManta Heavy Submersible** *(Mid-to-Late Game Vehicle)*:
+  - Bridge vehicle positioned between the Seamoth and Cyclops. Features a reinforced **500 HP armored hull** (2.5x Seamoth health), **500m base crush depth**, and **+45% boosted thrusters**.
+  - **Dual Hydraulic Manipulator Arms**:
+    - **Port Drill Arm (Left-Click)**: Excavates large resource deposits directly from the cockpit, cracks open mineral outcrops, and strikes hostile fauna for 50 kinetic damage with high knockback.
+    - **Starboard Grapple Arm (Right-Click)**: Fires a powerful kinetic tether impulse, pulling the submersible forward through deep ocean currents.
+  - **Recipe (Mobile Vehicle Bay)**: 1x Plasteel Ingot, 2x Enameled Glass, 1x Advanced Wiring Kit, 2x Power Cell, 2x Lead, 1x Lubricant.
 - **Void Depth Module MK4** *(Late Game)*:
   - Pushes vehicle operational limits, extending maximum crush depth to **3,500 meters**!
   - Equipped in Moonpool Modification / Upgrade consoles.
