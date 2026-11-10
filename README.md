@@ -19,7 +19,14 @@
 
 ---
 
-### 2. ⚡ Vehicles & Modules
+### 2. ⚡ Vehicles, Seaglides & Propulsion Modules
+- **Modular Seaglide System** *(Early-Mid Game)*:
+  - **Modular Seaglide**: Built by combining 1x standard Seaglide and 1x Empty Seaglide Module Chassis. Equipped with an internal expansion socket for hot-swappable performance modules. Press **`F`** or **`Alt`** while holding to hot-swap modules directly from your inventory!
+  - **Empty Seaglide Module Chassis**: Unprogrammed module housing crafted with 1x Titanium, 1x Wiring Kit, 1x Computer Chip.
+  - **Seaglide Speed Overdrive Module**: 1x Empty Module, 1x Magnetite, 1x Lubricant. Boosts underwater propulsion speed by **+35%**!
+  - **Seaglide Rebreather & O2 Injection Module**: 1x Empty Module, 1x Fiber Mesh, 1x Air Bladder. Continuously trickles fresh oxygen into your supply while actively gliding.
+  - **Seaglide Efficiency & Capacitor Module**: 1x Empty Module, 1x Battery, 1x Copper Wire. Reduces motor power drain by **65%**, more than doubling battery runtime.
+  - **Seaglide Acoustic Telemetry Module**: 1x Empty Module, 1x Copper Wire, 1x Quartz. Projects real-time HUD telemetry detailing current seabed clearance, depth, and water temperature.
 - **Void Depth Module MK4** *(Late Game)*:
   - Pushes vehicle operational limits, extending maximum crush depth to **3,500 meters**!
   - Equipped in Moonpool Modification / Upgrade consoles.

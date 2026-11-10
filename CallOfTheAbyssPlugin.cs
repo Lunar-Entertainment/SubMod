@@ -5,6 +5,7 @@ using Nautilus.Handlers;
 using CallOfTheAbyss.Configuration;
 using CallOfTheAbyss.Biomes;
 using CallOfTheAbyss.Items;
+using CallOfTheAbyss.Items.Seaglide;
 using CallOfTheAbyss.Vehicles;
 using CallOfTheAbyss.Buildables;
 using CallOfTheAbyss.Buildables.InWall;
@@ -44,6 +45,14 @@ public class CallOfTheAbyssPlugin : BaseUnityPlugin
         StreamlinedFins.Register();
         InsulatedWetsuit.Register();
         HydrostaticO2Tank.Register();
+
+        // Modular Seaglide & Expansion Modules
+        EmptySeaglideModule.Register();
+        ModularSeaglide.Register();
+        SeaglideSpeedModule.Register();
+        SeaglideOxygenModule.Register();
+        SeaglideBatteryModule.Register();
+        SeaglideSonarModule.Register();
 
         // Middle-Late Game Custom Architectural Tool
         AbyssalArchitectWelder.Register();

@@ -1,5 +1,6 @@
 using HarmonyLib;
 using CallOfTheAbyss.Items;
+using CallOfTheAbyss.Items.Seaglide;
 
 namespace CallOfTheAbyss.Mechanics.Patches;
 
@@ -24,12 +25,27 @@ public static class UnderwaterMotorPatches
     [HarmonyPostfix]
     public static void AlterMaxSpeedPostfix(ref float __result)
     {
-        if (Inventory.main != null && Inventory.main.equipment != null)
+        if (Inventory.main != null)
         {
-            var feetItem = Inventory.main.equipment.GetTechTypeInSlot("Foots");
-            if (feetItem == StreamlinedFins.Info.TechType)
+            // 1. Hydrodynamic Streamlined Fins
+            if (Inventory.main.equipment != null)
             {
-                __result *= 1.15f; // 15% swim velocity increase
+                var feetItem = Inventory.main.equipment.GetTechTypeInSlot("Foots");
+                if (feetItem == StreamlinedFins.Info.TechType)
+                {
+                    __result *= 1.15f; // 15% swim velocity increase
+                }
+            }
+
+            // 2. Modular Seaglide with Speed Overdrive Module
+            var heldTool = Inventory.main.GetHeldTool();
+            if (heldTool != null)
+            {
+                var modController = heldTool.GetComponent<ModularSeaglideController>();
+                if (modController != null && modController.CurrentModule == SeaglideSpeedModule.Info.TechType)
+                {
+                    __result *= 1.35f; // +35% Seaglide propulsion boost
+                }
             }
         }
     }
